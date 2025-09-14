@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube UTTP Comment Blocker",
+  "version": "1.0",
+  "description": "Blocks comments from users with UTTP in their name.",
+  "permissions": ["storage","scripting"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "UTTP Blocker Settings"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.youtube.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
