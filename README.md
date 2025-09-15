@@ -14,3 +14,4 @@ A simple extension to block UTTP comment spam. Allows you to either replace the 
 3. Go to chrome://extensions/
 4. Enable developer mode
 5. Click "Load unpacked"
+6. Point it to the unzipped folder
