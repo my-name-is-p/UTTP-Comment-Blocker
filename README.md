@@ -9,9 +9,14 @@ A simple extension to block UTTP comment spam. Allows you to either replace the 
 2. Word blacklist
 
 # To try
-1. [Download](https://github.com/my-name-is-p/UTTP-Comment-Blocker/releases/tag/v1.0.0) the zip
-2. Unzip
+1. [Download](https://github.com/my-name-is-p/UTTP-Comment-Blocker/releases/tag/v1.0.0) the zip file.
+2. Unzip the file to a folder on your computer.
 3. Go to chrome://extensions/
-4. Enable developer mode
-5. Click "Load unpacked"
-6. Point it to the unzipped folder
+4. Enable Developer mode using the toggle. (I use edge it's in the left sidebar)
+5. Click "Load unpacked" and select the folder you just unzipped.
+6. The extension should now be installed and active.
+
+# To hide placeholders
+1. Open your browser’s extension menu.
+2. Click on the YouTube UTTP Comment Blocker extension.
+3. In the extension popup, check the box labeled "Hide placeholders".
