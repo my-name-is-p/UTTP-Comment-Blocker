@@ -14,6 +14,8 @@ A simple extension to block comments on YouTube with editable blacklists for wor
 5. Click "Load unpacked" and select the folder you just unzipped.
 6. The extension should now be installed and active.
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/I2I2ZB6VK)
+
 # To hide placeholders
 1. Open your browser’s extension menu.
 2. Click on the Comment Blocker for YouTube extension.
