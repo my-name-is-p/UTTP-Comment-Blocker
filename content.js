@@ -3,7 +3,7 @@ const styles = window.getComputedStyle(body);
 const backgroundColor = styles.getPropertyValue('--yt-spec-inverted-background') + 'cc';
 
 function processComment(commentEl) {
-    chrome.storage.sync.get( {enabled: true, silent: false}, (data) => {
+    chrome.storage.sync.get( {enabled: true, silent: false, blockedUsers: ["@UTTP*"]}, (data) => {
         const author = commentEl.querySelector("#author-text span");
         const content = commentEl.querySelector("#content-text");
 
@@ -13,49 +13,78 @@ function processComment(commentEl) {
         if (!data.enabled){
             if (!author || !content) return;
 
-            uttpBlockShowComment(commentEl);
+            uttpBlockerShowComment(commentEl);
             return;
         }
 
         if (!author || !content) return;
 
-        if (author.innerText.includes("UTTP")) {            
-            commentEl.setAttribute('uttp-blocker-comment-hidden', 'true')
+        uttpBlockerShowComment(commentEl);
 
-            // Create placeholder box
-            const placeholder = uttpBlockCreatePlaceholder(author.innerText);
+        const authorText = author.innerText;
+        const contentText = content.innerText;
+        const blockedUsers = data.blockedUsers;
+        const userBlocked = uttpUserCheck(authorText, blockedUsers);
 
-            // Add toggle link
-            const toggleLink = uttpBlockCreateToggle();
-
-            toggleLink.addEventListener("click", (e) => {
-                e.preventDefault();
-                const commentHidden = commentEl.getAttribute('uttp-blocker-comment-hidden')?.toLowerCase() === "true";
-                if (commentHidden) {
-                    uttpBlockShowComment(commentEl);
-                    commentEl.setAttribute('uttp-blocker-comment-hidden', 'false');
-                    toggleLink.innerText = " (Hide)";
-                } else {
-                    uttpBlockHideComment(commentEl);
-                    commentEl.setAttribute('uttp-blocker-comment-hidden', 'true');
-                    toggleLink.innerText = " (Show)";
-                }
-            });
-
-            placeholder.appendChild(toggleLink);
-
-            // Hide comment content initially
-            uttpBlockHideComment(commentEl);
-            if(!data.silent){
-                console.log('test');
-                commentEl.style.flexWrap = 'wrap';
-                commentEl.prepend(placeholder);
-            }
+        if (userBlocked) {
+            uttpBlockerRemoveComment(commentEl, authorText, data.silent);
         }
     });
 }
 
-function uttpBlockShowComment(commentEl){
+function uttpBlockerRemoveComment(commentEl, author, silent){
+    commentEl.setAttribute('uttp-blocker-comment-hidden', 'true')
+
+    // Create placeholder box
+    const placeholder = uttpBlockCreatePlaceholder(author);
+
+    // Add toggle link
+    const toggleLink = uttpBlockCreateToggle();
+
+    toggleLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        const commentHidden = commentEl.getAttribute('uttp-blocker-comment-hidden')?.toLowerCase() === "true";
+        if (commentHidden) {
+            uttpBlockerShowComment(commentEl);
+            commentEl.setAttribute('uttp-blocker-comment-hidden', 'false');
+            toggleLink.innerText = " (Hide)";
+        } else {
+            uttpBlockerHideComment(commentEl);
+            commentEl.setAttribute('uttp-blocker-comment-hidden', 'true');
+            toggleLink.innerText = " (Show)";
+        }
+    });
+
+    placeholder.appendChild(toggleLink);
+
+    // Hide comment content initially
+    uttpBlockerHideComment(commentEl);
+    if(!silent){
+        commentEl.style.flexWrap = 'wrap';
+        commentEl.prepend(placeholder);
+    }
+}
+
+function uttpUserCheck(user, blockedUsers){
+    const blockedUsersFull = blockedUsers;
+    const blockedUsersPartial = blockedUsers.filter(str => str.includes('*'));
+    let blocked = false;
+
+    if(blockedUsersFull.includes(user)){
+        blocked = true;
+    }
+
+    blockedUsersPartial.forEach((blockedUser) => {
+        testName = blockedUser.slice(0, -1);
+        if(user.includes(testName)){
+            blocked = true;
+        }
+    });
+
+    return blocked;
+}
+
+function uttpBlockerShowComment(commentEl){
     const authorThumb = commentEl.querySelector("#author-thumbnail");
     const commentMain = commentEl.querySelector("#main");
     const actionMenu = commentEl.querySelector("#action-menu");
@@ -65,7 +94,7 @@ function uttpBlockShowComment(commentEl){
     if (authorThumb) authorThumb.style.display = "";
 }
 
-function uttpBlockHideComment(commentEl){
+function uttpBlockerHideComment(commentEl){
     const authorThumb = commentEl.querySelector("#author-thumbnail");
     const commentMain = commentEl.querySelector("#main");
     const actionMenu = commentEl.querySelector("#action-menu");
@@ -80,12 +109,14 @@ function uttpBlockCreatePlaceholder(authorName){
     placeholder.className = "ut-blocker-placeholder";
     placeholder.innerText = "Comment from " + authorName + " hidden by UTTP Blocker";
     placeholder.style.background = backgroundColor;
+    placeholder.style.minHeight
     placeholder.style.borderRadius = "4px";
     placeholder.style.padding = "6px 8px";
     placeholder.style.margin = "4px 0";
-    placeholder.style.fontSize = "0.9em";
+    placeholder.style.fontSize = "12px";
     placeholder.style.color = "var(--yt-spec-text-primary-inverse)";
     placeholder.style.fontStyle = "italic";
+    placeholder.style.fontWeight = "bold";
     placeholder.style.flexGrow = '1'; // Allows the item to grow
     placeholder.style.flexShrink = '0'; // Prevents the item from shrinking
     placeholder.style.flexBasis = '100%'; // Sets the initial size
@@ -112,9 +143,7 @@ const observer = new MutationObserver((mutations) => {
             if (node.nodeType === 1) {
                 if (node.classList.contains("ytd-comment-view-model")) {
                     processComment(node);
-                } else {
-                    node.querySelectorAll?.("ytd-comment-view-model").forEach(processComment);
-                }
+                } 
             }
         });
     }
