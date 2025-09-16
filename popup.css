@@ -52,7 +52,7 @@ span.bl-add-message-show{
 div.bl-list-wrapper{
     margin-top: 12px;
     max-height: 150px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 ul.bl-list{

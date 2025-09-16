@@ -59,7 +59,7 @@ function uttpBlockerSendUpdate(){
 function uttpShowAddMessage(msgBox, msgText){
     msgBox.innerText = msgText;
     msgBox.classList.add('bl-add-message-show');
-    return setTimeout(() => {
+    setTimeout(() => {
         msgBox.classList.remove('bl-add-message-show');
     }, 1000);
 }
@@ -77,10 +77,10 @@ function uttpUpdateUserBlacklist(){
     });
 }
 
-function uttpCreateListItem(liText){
+function uttpCreateListItem(user){
     const text = document.createElement("span");
     text.className = "bl-li-text";
-    text.innerText = liText;
+    text.innerText = user;
 
     const remove = document.createElement("span");
     remove.className = "bl-li-remove";
@@ -88,10 +88,11 @@ function uttpCreateListItem(liText){
     remove.addEventListener("click", () => {
         chrome.storage.sync.get({ blockedUsers: ["@UTTP*"] }, (data) => {
             const blockedUsers = data.blockedUsers;
-            const index = blockedUsers.indexOf(liText)
+            const index = blockedUsers.indexOf(user)
             if(index >= 0){
                 blockedUsers.splice(index, 1);
                 chrome.storage.sync.set({ blockedUsers: blockedUsers });
+                uttpShowAddMessage(addUserMessage, user + " removed from blacklist")
                 uttpUpdateUserBlacklist();
             }
         });
