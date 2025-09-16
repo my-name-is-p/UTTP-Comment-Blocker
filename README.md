@@ -7,7 +7,7 @@ A simple extension to block UTTP comment spam. Allows you to either replace the 
 2. Word blacklist
 
 # To try
-1. [Download](https://github.com/my-name-is-p/UTTP-Comment-Blocker/releases/tag/v1.0.0) the zip file.
+1. [Download](https://github.com/my-name-is-p/UTTP-Comment-Blocker/releases/tag/v1.0.1) the zip file.
 2. Unzip the file to a folder on your computer.
 3. Go to chrome://extensions/
 4. Enable Developer mode using the toggle. (I use edge it's in the left sidebar)
