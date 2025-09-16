@@ -3,7 +3,7 @@ const styles = window.getComputedStyle(body);
 const backgroundColor = styles.getPropertyValue('--yt-spec-inverted-background') + 'cc';
 
 function processComment(commentEl) {
-    chrome.storage.sync.get( {enabled: true, silent: false, blockedUsers: ["@UTTP*"]}, (data) => {
+    chrome.storage.sync.get( {enabled: true, silent: false, blockedUsers: ["@UTTP*"], blockedWords: []}, (data) => {
         const author = commentEl.querySelector("#author-text span");
         const content = commentEl.querySelector("#content-text");
 
@@ -23,10 +23,14 @@ function processComment(commentEl) {
 
         const authorText = author.innerText;
         const contentText = content.innerText;
+
         const blockedUsers = data.blockedUsers;
         const userBlocked = uttpUserCheck(authorText, blockedUsers);
 
-        if (userBlocked) {
+        const blockedWords = data.blockedWords;
+        const wordBlocked = uttpWordCheck(contentText, blockedWords);
+
+        if (userBlocked || wordBlocked) {
             uttpBlockerRemoveComment(commentEl, authorText, data.silent);
         }
     });
@@ -84,6 +88,21 @@ function uttpUserCheck(user, blockedUsers){
     return blocked;
 }
 
+function uttpWordCheck(word, blockedWords){
+    const blockedWordsFull = blockedWords;
+    let blocked = false;
+
+    blockedWordsFull.forEach((blockedWord) => {
+        word = word.toLowerCase();
+        blockedWord = blockedWord.toLowerCase();
+        if(word.includes(blockedWord)){
+            blocked = true;
+        }
+    });
+
+    return blocked;
+}
+
 function uttpBlockerShowComment(commentEl){
     const authorThumb = commentEl.querySelector("#author-thumbnail");
     const commentMain = commentEl.querySelector("#main");
@@ -107,7 +126,7 @@ function uttpBlockerHideComment(commentEl){
 function uttpBlockCreatePlaceholder(authorName){
     const placeholder = document.createElement("div");
     placeholder.className = "ut-blocker-placeholder";
-    placeholder.innerText = "Comment from " + authorName + " hidden by UTTP Blocker";
+    placeholder.innerText = "Comment from " + authorName;
     placeholder.style.background = backgroundColor;
     placeholder.style.minHeight
     placeholder.style.borderRadius = "4px";

@@ -1,12 +1,18 @@
 {
   "manifest_version": 3,
-  "name": "YouTube UTTP Comment Blocker",
-  "version": "1.0",
-  "description": "Blocks comments from users with UTTP in their name.",
+  "name": "Comment Blocker for YouTube",
+  "version": "1.0.2",
+  "description": "Blocks comments from blackisted users or blacklisted words.",
   "permissions": ["storage","scripting"],
+  "icons": {
+    "16": "icons/CBY-Logo-16.png",
+    "32": "icons/CBY-Logo-32.png",
+    "48": "icons/CBY-Logo-48.png",
+    "128": "icons/CBY-Logo-128.png"
+  },
   "action": {
     "default_popup": "popup.html",
-    "default_title": "UTTP Blocker Settings"
+    "default_title": "Comment Blocker for YouTube Settings"
   },
   "content_scripts": [
     {

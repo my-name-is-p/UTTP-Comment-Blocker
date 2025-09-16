@@ -1,12 +1,13 @@
 
-# UTTP Comment Blocker chrome extension
-A simple extension to block UTTP comment spam. Allows you to either replace the comment with a placeholder (default) or completely hide the comment. This is the initial creation and blocks all comments from usernames containing "UTTP". You can also add any username to the blacklist via the extension popup.
+![screenshot_001](.meta/screenshot_001.jpg)
+![screenshot_002](.meta/screenshot_002.jpg)
+![screenshot_003](.meta/screenshot_003.jpg)
 
-# To be Added
-1. Word blacklist
+# Comment Blocker for YouTube - Chromium Extension
+A simple extension to block comments on YouTube with editable blacklists for words or usernames.
 
 # To try
-1. [Download](https://github.com/my-name-is-p/UTTP-Comment-Blocker/releases/tag/v1.0.1) the zip file.
+1. [Download](https://github.com/my-name-is-p/Comment-Blocker-for-YouTube/releases/tag/v1.0.2) the zip file.
 2. Unzip the file to a folder on your computer.
 3. Go to chrome://extensions/
 4. Enable Developer mode using the toggle. (I use edge it's in the left sidebar)
@@ -15,17 +16,29 @@ A simple extension to block UTTP comment spam. Allows you to either replace the 
 
 # To hide placeholders
 1. Open your browser’s extension menu.
-2. Click on the YouTube UTTP Comment Blocker extension.
+2. Click on the Comment Blocker for YouTube extension.
 3. In the extension popup, check the box labeled "Hide placeholders".
 
 # To add usernames
 1. Open your browser’s extension menu.
-2. Click on the YouTube UTTP Comment Blocker extension.
-3. Type the username (with or without the '@') in the textbox.
+2. Click on the Comment Blocker for YouTube extension.
+3. Type the username (with or without the '@') in the "Add username to blacklist" textbox.
 4. Add an asterisk to the end for partial matches.
 5. Press return or click the button.
 
 # To remove usernames
 1. Open your browser’s extension menu.
-2. Click on the YouTube UTTP Comment Blocker extension.
+2. Click on the Comment Blocker for YouTube extension.
 3. Click the x next to the username you want to remove.
+
+# To add words/phrases
+1. Open your browser’s extension menu.
+2. Click on the Comment Blocker for YouTube extension.
+3. Type the word/phrase in the "Add word/phrase to blacklist" textbox.
+4. Add an asterisk to the end for partial matches.
+5. Press return or click the button.
+
+# To remove words/phrases
+1. Open your browser’s extension menu.
+2. Click on the Comment Blocker for YouTube extension.
+3. Click the x next to the word/phrase you want to remove.
