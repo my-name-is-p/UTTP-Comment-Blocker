@@ -3,8 +3,7 @@
 A simple extension to block UTTP comment spam. Allows you to either replace the comment with a placeholder (default) or completely hide the comment. This is the initial creation and blocks all comments from usernames containing "UTTP"
 
 # To be Added
-1. Username blacklist
-2. Word blacklist
+1. Word blacklist
 
 # To try
 1. [Download](https://github.com/my-name-is-p/UTTP-Comment-Blocker/releases/tag/v1.0.1) the zip file.
@@ -18,3 +17,14 @@ A simple extension to block UTTP comment spam. Allows you to either replace the 
 1. Open your browser’s extension menu.
 2. Click on the YouTube UTTP Comment Blocker extension.
 3. In the extension popup, check the box labeled "Hide placeholders".
+
+# To add usernames:
+1. Open your browser’s extension menu.
+2. Click on the YouTube UTTP Comment Blocker extension.
+3. Type the username (with or without the '@') in the textbox.
+4. Press return or click the button.
+
+# To remove usernames
+1. Open your browser’s extension menu.
+2. Click on the YouTube UTTP Comment Blocker extension.
+3. Click the x next to the username you want to remove.
