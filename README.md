@@ -22,7 +22,8 @@ A simple extension to block UTTP comment spam. Allows you to either replace the 
 1. Open your browser’s extension menu.
 2. Click on the YouTube UTTP Comment Blocker extension.
 3. Type the username (with or without the '@') in the textbox.
-4. Press return or click the button.
+4. Add an asterisk to the end for partial matches.
+5. Press return or click the button.
 
 # To remove usernames
 1. Open your browser’s extension menu.
