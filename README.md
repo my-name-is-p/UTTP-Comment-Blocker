@@ -18,7 +18,7 @@ A simple extension to block UTTP comment spam. Allows you to either replace the 
 2. Click on the YouTube UTTP Comment Blocker extension.
 3. In the extension popup, check the box labeled "Hide placeholders".
 
-# To add usernames:
+# To add usernames
 1. Open your browser’s extension menu.
 2. Click on the YouTube UTTP Comment Blocker extension.
 3. Type the username (with or without the '@') in the textbox.
