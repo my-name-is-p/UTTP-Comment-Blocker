@@ -79,7 +79,7 @@ function uttpUserCheck(user, blockedUsers){
     }
 
     blockedUsersPartial.forEach((blockedUser) => {
-        testName = blockedUser.slice(0, -1);
+        const testName = blockedUser.slice(0, -1);
         if(user.includes(testName)){
             blocked = true;
         }
@@ -128,7 +128,6 @@ function uttpBlockCreatePlaceholder(authorName){
     placeholder.className = "ut-blocker-placeholder";
     placeholder.innerText = "Comment from " + authorName;
     placeholder.style.background = backgroundColor;
-    placeholder.style.minHeight
     placeholder.style.borderRadius = "4px";
     placeholder.style.padding = "6px 8px";
     placeholder.style.margin = "4px 0";

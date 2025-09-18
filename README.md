@@ -6,6 +6,8 @@
 # Comment Blocker for YouTube - Chromium Extension
 A simple extension to block comments on YouTube with editable blacklists for words or usernames.
 
+If you have any issues, please open a [ticket](https://github.com/my-name-is-p/Comment-Blocker-for-YouTube/issues) or let me know on [discord](https://discord.gg/usS3kE4r)
+
 # To try
 1. [Download](https://github.com/my-name-is-p/Comment-Blocker-for-YouTube/releases/tag/v1.0.2) the zip file.
 2. Unzip the file to a folder on your computer.
