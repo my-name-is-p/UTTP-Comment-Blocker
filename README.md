@@ -39,8 +39,7 @@ If you have any issues, please open a [ticket](https://github.com/my-name-is-p/C
 1. Open your browser’s extension menu.
 2. Click on the Comment Blocker for YouTube extension.
 3. Type the word/phrase in the "Add word/phrase to blacklist" textbox.
-4. Add an asterisk to the end for partial matches.
-5. Press return or click the button.
+4. Press return or click the button.
 
 # To remove words/phrases
 1. Open your browser’s extension menu.
