@@ -79,7 +79,7 @@ function uttpUserCheck(user, blockedUsers){
     }
 
     blockedUsersPartial.forEach((blockedUser) => {
-        const testName = blockedUser.slice(0, -1);
+        const testName = blockedUser.slice(1, -1);
         if(user.includes(testName)){
             blocked = true;
         }
